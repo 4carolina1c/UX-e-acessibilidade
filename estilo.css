@@ -1,4 +1,8 @@
 /* Configurações Globais para Acessibilidade */
+html {
+  scroll-behavior: smooth; /* Permite que o botão role a página suavemente */
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,77 +11,129 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 22px; /* Fonte maior para facilitar a leitura */
+  font-size: 22px; /* Fonte ampliada para leitura confortável */
   line-height: 1.6;
   background-color: #f4f6f9;
-  color: #1a1a1a; /* Alto contraste entre texto e fundo */
+  color: #1a1a1a;
   padding: 20px;
 }
 
-/* Cabeçalho */
-header {
-  background-color: #004085; /* Azul escuro de alto contraste */
-  color: #ffffff;
-  text-align: center;
-  padding: 30px 20px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-}
-
-header h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-header p {
-  font-size: 24px;
-}
-
-/* Conteúdo Principal */
 main {
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* Cartões Informativos */
-.card {
-  background-color: #ffffff;
-  border: 3px solid #004085; /* Borda espessa para destaque visual */
+/* Banner Inicial */
+.banner {
+  background-color: #003366;
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
   border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 
-.card h2 {
-  color: #004085;
-  font-size: 28px;
+.banner h1 {
+  font-size: 38px;
   margin-bottom: 15px;
 }
 
-.card p {
-  color: #2c2c2c;
+.banner p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+/* Botão de Ajuda Acessível */
+.btn-ajuda {
+  display: inline-block;
+  background-color: #ffcc00;
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 18px 36px;
+  border-radius: 50px;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-ajuda:focus, .btn-ajuda:hover {
+  background-color: #e6b800;
+  outline: 4px solid #ffffff;
+}
+
+/* Seções e Títulos */
+.secao {
+  margin-bottom: 40px;
+}
+
+.secao h2 {
+  color: #003366;
+  font-size: 30px;
+  margin-bottom: 15px;
+  border-bottom: 4px solid #003366;
+  padding-bottom: 8px;
+}
+
+.subtitulo-secao {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Cartões Informativos */
+.card {
+  background-color: #ffffff;
+  border: 3px solid #003366;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  color: #003366;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+/* Estilo Diferenciado para Alertas de Golpe */
+.card.alerta {
+  border-color: #b30000;
+  background-color: #fff5f5;
+}
+
+.card.alerta h3 {
+  color: #b30000;
 }
 
 /* Seção de Ajuda */
-.ajuda {
-  background-color: #fff3cd; /* Fundo amarelo claro para alerta leve */
-  border: 3px solid #856404;
+.secao-ajuda {
+  background-color: #e6f0fa;
+  border: 4px solid #003366;
   border-radius: 12px;
-  padding: 25px;
-  margin-top: 30px;
-  text-align: center;
+  padding: 30px;
+  margin-top: 40px;
 }
 
-.ajuda h2 {
-  color: #856404;
-  font-size: 28px;
+.secao-ajuda h2 {
+  color: #003366;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.secao-ajuda ul {
+  margin-left: 30px;
+  margin-top: 15px;
+}
+
+.secao-ajuda li {
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 /* Rodapé */
 footer {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 50px;
   padding: 20px;
   font-size: 18px;
   color: #555555;
