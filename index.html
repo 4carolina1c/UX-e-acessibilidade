@@ -8,15 +8,22 @@
 </head>
 <body>
 
-  <!-- Início / Banner Principal -->
+  <nav class="menu-acessibilidade" aria-label="Ferramentas de Acessibilidade">
+    <div class="conteudo-menu">
+      <span class="titulo-menu">Acessibilidade:</span>
+      <button id="btn-aumentar" class="btn-ferramenta" aria-label="Aumentar o tamanho do texto">A+</button>
+      <button id="btn-diminuir" class="btn-ferramenta" aria-label="Diminuir o tamanho do texto">A-</button>
+      <button id="btn-voz" class="btn-ferramenta" aria-label="Ouvir o texto da página">🔊 Ouvir Texto</button>
+    </div>
+  </nav>
+
   <header class="banner">
     <h1>Segurança Digital Fácil</h1>
     <p>Aprenda a navegar na internet com tranquilidade e proteção.</p>
     <a href="#secao-ajuda" class="btn-ajuda">Preciso de Ajuda</a>
   </header>
 
-  <main>
-    <!-- Seção: Dicas Importantes -->
+  <main id="conteudo-principal">
     <section class="secao">
       <h2>Dicas Importantes: Seus Direitos na Internet</h2>
       
@@ -36,7 +43,6 @@
       </article>
     </section>
 
-    <!-- Seção: Como saber se estou caindo em um golpe? -->
     <section class="secao">
       <h2>Como Saber se Estou Caindo em um Golpe?</h2>
       <p class="subtitulo-secao">Fique atento caso perceba estas atitudes suspeitas:</p>
@@ -50,19 +56,8 @@
         <h3>Pedidos de Dinheiro Surpresa</h3>
         <p>Mensagens de parentes ou conhecidos pedindo transferência urgente por números de telefone novos ou desconhecidos.</p>
       </article>
-
-      <article class="card alerta">
-        <h3>Promessas de Ganhos Fáceis</h3>
-        <p>Ofertas de prêmios, dinheiro fácil ou descontos muito grandes em trocas de cadastros ou pagamentos antecipados.</p>
-      </article>
-
-      <article class="card alerta">
-        <h3>Links Enviados por Mensagem</h3>
-        <p>Mensagens pedindo para você clicar em links para "atualizar cadastro" ou "cancelar uma compra".</p>
-      </article>
     </section>
 
-    <!-- Seção de Ajuda (Destino do Botão) -->
     <section id="secao-ajuda" class="secao-ajuda">
       <h2>Central de Ajuda</h2>
       <p>Em caso de dúvida ou suspeita de golpe:</p>
@@ -77,6 +72,44 @@
   <footer>
     <p>Guia Informativo de Acessibilidade Digital</p>
   </footer>
-  <script src="script.js"></script>
+
+  <script>
+    let tamanhoFonteAtual = 100; // Porcentagem inicial
+
+    const btnAumentar = document.getElementById('btn-aumentar');
+    const btnDiminuir = document.getElementById('btn-diminuir');
+    const btnVoz = document.getElementById('btn-voz');
+
+    // Aumentar Fonte
+    btnAumentar.addEventListener('click', () => {
+      if (tamanhoFonteAtual < 150) {
+        tamanhoFonteAtual += 10;
+        document.body.style.fontSize = tamanhoFonteAtual + '%';
+      }
+    });
+
+    // Diminuir Fonte
+    btnDiminuir.addEventListener('click', () => {
+      if (tamanhoFonteAtual > 80) {
+        tamanhoFonteAtual -= 10;
+        document.body.style.fontSize = tamanhoFonteAtual + '%';
+      }
+    });
+
+    // Leitura em Voz Alta (SpeechSynthesis)
+    btnVoz.addEventListener('click', () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // Para leituras anteriores
+        const textoParaLer = document.getElementById('conteudo-principal').innerText;
+        const mensagem = new SpeechSynthesisUtterance(textoParaLer);
+        mensagem.lang = 'pt-BR';
+        mensagem.rate = 0.9; // Velocidade ligeiramente pausada para facilitar a compreensão
+        window.speechSynthesis.speak(mensagem);
+      } else {
+        alert('O seu navegador não suporta a leitura em voz alta.');
+      }
+    });
+  </script>
+
 </body>
 </html>
