@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guia de Segurança Digital</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegação Segura</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <nav class="barra-acessibilidade" aria-label="Menu de acessibilidade">
+
+    <nav class="barra-acessibilidade" aria-label="Menu de acessibilidade">
 
         <div class="conteiner-acessibilidade">
 
@@ -42,99 +45,84 @@
         </div>
 
     </nav>
-  <header class="banner">
-    <h1>Segurança Digital Fácil</h1>
-    <p>Aprenda a navegar na internet com tranquilidade e proteção.</p>
-    <a href="#secao-ajuda" class="btn-ajuda">Preciso de Ajuda</a>
-  </header>
 
-  <main id="conteudo-principal">
-    <section class="secao">
-      <h2>Dicas Importantes: Seus Direitos na Internet</h2>
-      
-      <article class="card">
-        <h3>1. Privacidade é um Direito</h3>
-        <p>Seus dados pessoais pertencem a você. Ninguém pode exigir suas senhas ou informações bancárias sem sua autorização.</p>
-      </article>
+    <header class="cabecalho">
 
-      <article class="card">
-        <h3>2. Direito ao Atendimento Humano</h3>
-        <p>Você tem o direito de solicitar atendimento por uma pessoa real em bancos e serviços públicos, sem depender apenas de robôs.</p>
-      </article>
+        <h1>Navegação Segura</h1>
 
-      <article class="card">
-        <h3>3. Proteção Contra Enganação</h3>
-        <p>A lei protege você contra propagandas falsas e cobranças indevidas na internet e no celular.</p>
-      </article>
-    </section>
+        <p>
+            Aprenda como navegar na internet com segurança e conheça recursos de acessibilidade
+            que tornam a experiência digital mais inclusiva.
+        </p>
 
-    <section class="secao">
-      <h2>Como Saber se Estou Caindo em um Golpe?</h2>
-      <p class="subtitulo-secao">Fique atento caso perceba estas atitudes suspeitas:</p>
+        <button class="botao-ajuda">
+            🚨 Preciso de ajuda
+        </button>
 
-      <article class="card alerta">
-        <h3>Pressão e Urgência</h3>
-        <p>A pessoa diz que algo terrível vai acontecer ou que você vai perder muito dinheiro se não agir imediatamente.</p>
-      </article>
+    </header>
 
-      <article class="card alerta">
-        <h3>Pedidos de Dinheiro Surpresa</h3>
-        <p>Mensagens de parentes ou conhecidos pedindo transferência urgente por números de telefone novos ou desconhecidos.</p>
-      </article>
-    </section>
+    <main class="conteudo">
 
-    <section id="secao-ajuda" class="secao-ajuda">
-      <h2>Central de Ajuda</h2>
-      <p>Em caso de dúvida ou suspeita de golpe:</p>
-      <ul>
-        <li>Ligue para um familiar de sua confiança.</li>
-        <li>Não faça transferências de dinheiro imediatamente.</li>
-        <li>Procure a sua agência bancária presencialmente.</li>
-      </ul>
-    </section>
-  </main>
+        <section class="cartao">
 
-  <footer>
-    <p>Guia Informativo de Acessibilidade Digital</p>
-  </footer>
+            <h2>🔐 Segurança Digital</h2>
 
-  <script>
-    let tamanhoFonteAtual = 100; // Porcentagem inicial
+            <p>
+                Utilize senhas fortes, não compartilhe códigos recebidos por SMS
+                e desconfie de mensagens urgentes ou desconhecidas.
+            </p>
 
-    const btnAumentar = document.getElementById('btn-aumentar');
-    const btnDiminuir = document.getElementById('btn-diminuir');
-    const btnVoz = document.getElementById('btn-voz');
+        </section>
 
-    // Aumentar Fonte
-    btnAumentar.addEventListener('click', () => {
-      if (tamanhoFonteAtual < 150) {
-        tamanhoFonteAtual += 10;
-        document.body.style.fontSize = tamanhoFonteAtual + '%';
-      }
-    });
+        <section class="cartao">
 
-    // Diminuir Fonte
-    btnDiminuir.addEventListener('click', () => {
-      if (tamanhoFonteAtual > 80) {
-        tamanhoFonteAtual -= 10;
-        document.body.style.fontSize = tamanhoFonteAtual + '%';
-      }
-    });
+            <h2>♿ Recursos de Acessibilidade</h2>
 
-    // Leitura em Voz Alta (SpeechSynthesis)
-    btnVoz.addEventListener('click', () => {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel(); // Para leituras anteriores
-        const textoParaLer = document.getElementById('conteudo-principal').innerText;
-        const mensagem = new SpeechSynthesisUtterance(textoParaLer);
-        mensagem.lang = 'pt-BR';
-        mensagem.rate = 0.9; // Velocidade ligeiramente pausada para facilitar a compreensão
-        window.speechSynthesis.speak(mensagem);
-      } else {
-        alert('O seu navegador não suporta a leitura em voz alta.');
-      }
-    });
-  </script>
+            <p>
+                Este site oferece aumento e redução de fonte,
+                leitura em voz alta, alto contraste e restauração
+                das configurações.
+            </p>
+
+        </section>
+
+        <section class="cartao">
+
+            <h2>💡 Dicas Importantes</h2>
+
+            <ul>
+                <li>Verifique links antes de clicar.</li>
+                <li>Não compartilhe dados pessoais.</li>
+                <li>Mantenha seus aplicativos atualizados.</li>
+                <li>Use autenticação em dois fatores.</li>
+            </ul>
+
+        </section>
+
+        <section class="cartao">
+
+            <h2>📞 Contatos Úteis</h2>
+
+            <p>🚓 Polícia Militar: <strong>190</strong></p>
+
+            <p>👮 Disque Direitos Humanos: <strong>100</strong></p>
+
+            <p>🌐 SaferNet Brasil</p>
+
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+
+        <p>
+            Projeto original de UX e Acessibilidade • 2026
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>

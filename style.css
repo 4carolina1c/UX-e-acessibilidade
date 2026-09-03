@@ -1,197 +1,262 @@
-/* Configurações Globais */
-html {
-  scroll-behavior: smooth;
+body{
+    background:#f4f6f9;
+    color:#333;
+    line-height:1.6;
+    transition:.3s;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Barra de acessibilidade */
+
+.barra-acessibilidade{
+    background:#1f2937;
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.barra-acessibilidade{
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 100%; /* Base para alteração proporcional via JS */
-  line-height: 1.6;
-  background-color: #f4f6f9;
-  color: #1a1a1a;
-  padding-top: 90px; /* Espaço para o menu fixo não cobrir o conteúdo */
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+.conteiner-acessibilidade{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
 }
 
-/* Menu de Acessibilidade Fixo */
-.menu-acessibilidade {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #001f3f;
-  border-bottom: 3px solid #ffcc00;
-  padding: 10px 20px;
-  z-index: 1000;
+.rotulo-acessibilidade{
+    color:white;
+    font-size:18px;
+    font-weight:bold;
 }
 
-.conteudo-menu {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  flex-wrap: wrap;
+.grupo-botoes-acessibilidade{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-.titulo-menu {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-right: auto;
+.botao-acessibilidade{
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px 16px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:bold;
+    transition:.3s;
 }
 
-/* Botões do Menu */
-.btn-ferramenta {
-  background-color: #ffffff;
-  color: #001f3f;
-  border: 2px solid #ffcc00;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
+.botao-acessibilidade:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
 }
 
-.btn-ferramenta:hover, 
-.btn-ferramenta:focus {
-  background-color: #ffcc00;
-  color: #000000;
-  outline: 3px solid #ffffff;
+.botao-acessibilidade:focus{
+    outline:3px solid yellow;
+    outline-offset:3px;
 }
 
-/* Conteúdo Principal */
-main {
-  max-width: 800px;
-  margin: 0 auto;
+/* Cabeçalho */
+
+.cabecalho{
+    background:linear-gradient(135deg,#2563eb,#1e3a8a);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
 }
 
-/* Banner Inicial */
-.banner {
-  background-color: #003366;
-  color: #ffffff;
-  text-align: center;
-  padding: 40px 20px;
-  border-radius: 12px;
-  margin-bottom: 40px;
+.cabecalho h1{
+    font-size:2.5rem;
+    margin-bottom:10px;
 }
 
-.banner h1 {
-  font-size: 2.2rem;
-  margin-bottom: 15px;
+.cabecalho p{let tamanhoFonte = 100;
+
+// Botões
+const botaoAumentarFonte = document.getElementById("botao-aumentar-fonte");
+const botaoDiminuirFonte = document.getElementById("botao-diminuir-fonte");
+const botaoLeituraVoz = document.getElementById("botao-leitura-voz");
+const botaoAltoContraste = document.getElementById("botao-alto-contraste");
+const botaoRestaurar = document.getElementById("botao-restaurar");
+const botaoAjuda = document.querySelector(".botao-ajuda");
+
+// Aumentar fonte
+botaoAumentarFonte.addEventListener("click", () => {
+    if (tamanhoFonte < 200) {
+        tamanhoFonte += 10;
+        document.body.style.fontSize = tamanhoFonte + "%";
+    }
+});
+
+// Diminuir fonte
+botaoDiminuirFonte.addEventListener("click", () => {
+    if (tamanhoFonte > 70) {
+        tamanhoFonte -= 10;
+        document.body.style.fontSize = tamanhoFonte + "%";
+    }
+});
+
+// Alto contraste
+botaoAltoContraste.addEventListener("click", () => {
+    document.body.classList.toggle("alto-contraste");
+});
+
+// Leitura em voz alta
+botaoLeituraVoz.addEventListener("click", () => {
+
+    if ("speechSynthesis" in window) {
+
+        speechSynthesis.cancel();
+
+        const texto = document.body.innerText;
+
+        const fala = new SpeechSynthesisUtterance(texto);
+
+        fala.lang = "pt-BR";
+        fala.rate = 1;
+        fala.pitch = 1;
+
+        speechSynthesis.speak(fala);
+
+    } else {
+        alert("Seu navegador não suporta leitura em voz alta.");
+    }
+
+});
+
+// Restaurar configurações
+botaoRestaurar.addEventListener("click", () => {
+
+    tamanhoFonte = 100;
+    document.body.style.fontSize = "100%";
+    document.body.classList.remove("alto-contraste");
+    speechSynthesis.cancel();
+
+});
+
+// Botão de ajuda
+botaoAjuda.addEventListener("click", () => {
+
+    alert(
+`Dicas rápidas:
+
+• Não compartilhe senhas.
+• Verifique links antes de clicar.
+• Use senhas fortes.
+• Ative a autenticação em dois fatores.
+• Em caso de golpe, procure ajuda imediatamente.`
+    );
+
+});
+    font-size:1.2rem;
 }
 
-.banner p {
-  font-size: 1.3rem;
-  margin-bottom: 30px;
+/* Conteúdo */
+
+.conteudo{
+    max-width:1100px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    padding:20px;
 }
 
-/* Botão de Ajuda */
-.btn-ajuda {
-  display: inline-block;
-  background-color: #ffcc00;
-  color: #000000;
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 16px 32px;
-  border-radius: 50px;
-  border: 3px solid #ffffff;
+.cartao{
+    min-height:230px;
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    transition:.3s;
 }
 
-.btn-ajuda:focus, 
-.btn-ajuda:hover {
-  background-color: #e6b800;
-  outline: 4px solid #000000;
+
+.cartao:hover{
+    transform:translateY(-5px);
 }
 
-/* Seções e Cartões */
-.secao {
-  margin-bottom: 40px;
+.cartao h2{
+    color:#2563eb;
+    margin-bottom:15px;
 }
 
-.secao h2 {
-  color: #003366;
-  font-size: 1.6rem;
-  margin-bottom: 15px;
-  border-bottom: 4px solid #003366;
-  padding-bottom: 8px;
+/* Botão de ajuda */
+
+.botao-ajuda{
+    margin-top:20px;
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.subtitulo-secao {
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.card {
-  background-color: #ffffff;
-  border: 3px solid #003366;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 20px;
-}
-
-.card h3 {
-  color: #003366;
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 1.1rem;
-}
-
-/* Alertas */
-.card.alerta {
-  border-color: #b30000;
-  background-color: #fff5f5;
-}
-
-.card.alerta h3 {
-  color: #b30000;
-}
-
-/* Seção de Ajuda */
-.secao-ajuda {
-  background-color: #e6f0fa;
-  border: 4px solid #003366;
-  border-radius: 12px;
-  padding: 30px;
-  margin-top: 40px;
-}
-
-.secao-ajuda h2 {
-  color: #003366;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-}
-
-.secao-ajuda ul {
-  margin-left: 30px;
-  margin-top: 15px;
-  font-size: 1.1rem;
-}
-
-.secao-ajuda li {
-  margin-bottom: 10px;
-  font-weight: bold;
+.botao-ajuda:hover{
+    background:#b91c1c;
 }
 
 /* Rodapé */
-footer {
-  text-align: center;
-  margin-top: 50px;
-  padding: 20px;
-  font-size: 1rem;
-  color: #555555;
+
+.rodape{
+    text-align:center;
+    background:#1f2937;
+    color:white;
+    padding:20px;
+    margin-top:50px;
+}
+
+/* Alto contraste */
+
+.alto-contraste{
+    background:black;
+    color:white;
+}
+
+.alto-contraste .cabecalho{
+    background:black;
+}
+
+.alto-contraste .cartao{
+    background:#111;
+    color:white;
+    border:2px solid yellow;
+}
+
+.alto-contraste .botao-acessibilidade{
+    background:white;
+    color:black;
+    border:2px solid yellow;
+}
+
+.alto-contraste .rodape{
+    background:black;
+    color:white;
+}
+
+/* Responsividade */
+
+@media(max-width:768px){
+
+    .conteiner-acessibilidade{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .grupo-botoes-acessibilidade{
+        justify-content:center;
+    }
+
+    .cabecalho h1{
+        font-size:2rem;
+    }
+
 }
